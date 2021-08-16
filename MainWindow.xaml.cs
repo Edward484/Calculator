@@ -28,6 +28,8 @@ namespace Calculator
         Multiplication
     }
 
+
+
     public partial class MainWindow : Window
     {
         double lastNumber;
@@ -58,6 +60,7 @@ namespace Calculator
             double newNumber;
             if (double.TryParse(resultLabel.Content.ToString(), out newNumber))
             {
+                miniDisplay.Content = miniDisplay.Content.ToString() + $" {newNumber.ToString()} =";
                 switch (SelectedOperator)
                 {
                     case SelectedOperator.Addition:
@@ -113,23 +116,28 @@ namespace Calculator
             if (double.TryParse(resultLabel.Content.ToString(), out lastNumber))
             {
                 resultLabel.Content = 0;
+                miniDisplay.Content = lastNumber.ToString();
             }
 
             if (sender == multiplyButton)
             {
                 SelectedOperator = SelectedOperator.Multiplication;
+                miniDisplay.Content = miniDisplay.Content.ToString()+ " *";
             }
             if(sender == divideButton)
             {
                 SelectedOperator = SelectedOperator.Division;
+                miniDisplay.Content = miniDisplay.Content.ToString() + " /";
             }
             if(sender == addButton)
             {
                 SelectedOperator = SelectedOperator.Addition;
+                miniDisplay.Content = miniDisplay.Content.ToString() + " +";
             }
             if(sender == substractButton)
             {
                 SelectedOperator = SelectedOperator.Substraction;
+                miniDisplay.Content = miniDisplay.Content.ToString() + " -";
             }
         }
 
